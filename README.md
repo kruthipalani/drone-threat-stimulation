@@ -1,65 +1,89 @@
-# THRYVE | Drone Threat Simulation Trainer
+# THRYVE SIM-TRAINER
 
-[![SIH 2026](https://img.shields.io/badge/SIH-2026-emerald.svg)](https://sih.gov.in)
-[![Ministry of Defence](https://img.shields.io/badge/MoD-DSSC-blue.svg)](#)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org)
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green.svg)](https://supabase.com)
-[![Vercel](https://img.shields.io/badge/Vercel-Production%20Ready-black.svg)](https://vercel.com)
+[![Next.js](https://img.shields.io/badge/Frontend-Next.js%2015-black.svg)](https://nextjs.org)
+[![Express](https://img.shields.io/badge/Backend-Node.js%20%2B%20Express-green.svg)](https://expressjs.com)
+[![Supabase](https://img.shields.io/badge/Database-Supabase%20PostgreSQL-emerald.svg)](https://supabase.com)
 
-**Problem Statement ID:** 26247  
-**Title:** AI-Enabled Drone & Counter-Drone Threat Simulation Trainer  
-**Organization:** Ministry of Defence (MoD)  
-**Department:** Defence Services Staff College (DSSC)  
+A professional full-stack monorepo application for drone & counter-drone threat simulation training, decision assessment, and longitudinal performance analytics.
 
 ---
 
-## 🛡️ Project Overview
-**THRYVE** is a production-ready software-based simulation and assessment web platform designed for defence personnel to train against single-drone, multi-drone, and autonomous swarm threats.
+## 📁 Repository Architecture
+
+```
+/
+├── frontend/                 # Next.js 15 App Router Frontend
+│   ├── src/
+│   │   ├── app/              # Next.js Pages & Client Views
+│   │   ├── components/       # Mission-Control UI Components
+│   │   ├── lib/              # API Client & Utility Functions
+│   │   └── types/            # Shared TypeScript Interfaces
+│   ├── public/               # Static Assets
+│   └── package.json
+│
+├── backend/                  # Node.js + Express + TypeScript Backend
+│   ├── src/
+│   │   ├── config/           # Supabase & Environment Configuration
+│   │   ├── controllers/      # REST API Route Controllers
+│   │   ├── middleware/       # Error & Request Handling Middleware
+│   │   ├── models/           # TypeScript Interfaces
+│   │   ├── routes/           # REST API Route Handlers
+│   │   ├── services/         # Scoring, Scenario & Analytics Services
+│   │   └── server.ts         # Express Application Entry Point
+│   └── package.json
+│
+├── supabase/
+│   └── schema.sql            # PostgreSQL DDL & Seed Script
+└── package.json              # Root Workspace Configuration
+```
 
 ---
 
-## 🚀 Local Setup & Production Testing
+## ⚡ Quick Start
 
-### 1. Development Mode
+### 1. Install Dependencies
 ```bash
+# Install root, frontend, and backend dependencies
 npm install
+```
+
+### 2. Environment Setup
+Copy `.env.example` templates in both `frontend/` and `backend/`:
+```bash
+cp frontend/.env.example frontend/.env.local
+cp backend/.env.example backend/.env
+```
+
+### 3. Run Development Server
+```bash
+# Runs both backend (port 4000) and frontend (port 3000) concurrently
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000).
 
-### 2. Production Build Test
+---
+
+## 🚀 Building for Production
+
 ```bash
+# Build both frontend and backend
 npm run build
-npm run start
+```
+
+Or build individually:
+```bash
+npm run build:frontend
+npm run build:backend
 ```
 
 ---
 
-## 🚢 Supabase Database Setup
-1. Create a project in [Supabase](https://supabase.com).
-2. Open **SQL Editor**.
-3. Paste the contents of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**.
-4. Copy `Project URL` and `Anon Key`.
-
----
-
-## 🌐 Vercel Deployment Instructions
-1. Push project to your GitHub repository.
-2. Import repository into [Vercel](https://vercel.com).
-3. Under **Environment Variables**, add:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-4. Click **Deploy**.
-5. Test live health check at `https://YOUR-VERCEL-DOMAIN.vercel.app/api/health`.
-
----
-
-## 📁 Key Routes
-- `/`: Landing Page
-- `/dashboard`: Trainee Dashboard
-- `/scenarios`: Scenario Repository & Procedural Generator
-- `/training/[scenarioId]`: Interactive Multi-Target Simulation
-- `/aar/[sessionId]`: After-Action Review (AAR) Dashboard
-- `/history`: Trainee Longitudinal Performance Log
-- `/admin`: Instructor Admin Dashboard
-- `/api/health`: Production Health Endpoint
+## 🔗 REST API Endpoints (Backend)
+- `GET  /api/health`: Health status & telemetry mode
+- `GET  /api/scenarios`: Fetch available scenarios
+- `GET  /api/scenarios/:id`: Fetch scenario details
+- `POST /api/scenarios/generate`: Procedural scenario engine
+- `POST /api/sessions/start`: Start training session
+- `POST /api/sessions/complete`: Record session & calculate score
+- `GET  /api/trainee`: Trainee metrics & session history
+- `GET  /api/aar/:sessionId`: After-Action Review (AAR)
+- `GET  /api/admin/analytics`: Unit analytics & skill matrix
