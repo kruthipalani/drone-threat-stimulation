@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# THRYVE | Drone Threat Simulation Trainer
 
-## Getting Started
+[![SIH 2026](https://img.shields.io/badge/SIH-2026-emerald.svg)](https://sih.gov.in)
+[![Ministry of Defence](https://img.shields.io/badge/MoD-DSSC-blue.svg)](#)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green.svg)](https://supabase.com)
+[![Vercel](https://img.shields.io/badge/Vercel-Production%20Ready-black.svg)](https://vercel.com)
 
-First, run the development server:
+**Problem Statement ID:** 26247  
+**Title:** AI-Enabled Drone & Counter-Drone Threat Simulation Trainer  
+**Organization:** Ministry of Defence (MoD)  
+**Department:** Defence Services Staff College (DSSC)  
 
+---
+
+## 🛡️ Project Overview
+**THRYVE** is a production-ready software-based simulation and assessment web platform designed for defence personnel to train against single-drone, multi-drone, and autonomous swarm threats.
+
+---
+
+## 🚀 Local Setup & Production Testing
+
+### 1. Development Mode
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Open [http://localhost:3000](http://localhost:3000).
+
+### 2. Production Build Test
+```bash
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚢 Supabase Database Setup
+1. Create a project in [Supabase](https://supabase.com).
+2. Open **SQL Editor**.
+3. Paste the contents of [`supabase/schema.sql`](supabase/schema.sql) and click **Run**.
+4. Copy `Project URL` and `Anon Key`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌐 Vercel Deployment Instructions
+1. Push project to your GitHub repository.
+2. Import repository into [Vercel](https://vercel.com).
+3. Under **Environment Variables**, add:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Click **Deploy**.
+5. Test live health check at `https://YOUR-VERCEL-DOMAIN.vercel.app/api/health`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Key Routes
+- `/`: Landing Page
+- `/dashboard`: Trainee Dashboard
+- `/scenarios`: Scenario Repository & Procedural Generator
+- `/training/[scenarioId]`: Interactive Multi-Target Simulation
+- `/aar/[sessionId]`: After-Action Review (AAR) Dashboard
+- `/history`: Trainee Longitudinal Performance Log
+- `/admin`: Instructor Admin Dashboard
+- `/api/health`: Production Health Endpoint
