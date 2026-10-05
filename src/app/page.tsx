@@ -80,8 +80,8 @@ export default function HomePage() {
             {/* Platform Quick Specs */}
             <div className="mt-12 grid grid-cols-3 gap-4 border-t border-slate-800/80 pt-6 text-slate-400 font-mono text-xs">
               <div>
-                <span className="block text-slate-500 text-[10px] uppercase">Problem ID</span>
-                <span className="text-slate-200 font-bold">26247</span>
+                <span className="block text-slate-500 text-[10px] uppercase">Platform System</span>
+                <span className="text-slate-200 font-bold">v2.0 Production</span>
               </div>
               <div>
                 <span className="block text-slate-500 text-[10px] uppercase">Target Environment</span>

@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     'Counter-Drone Trainer',
     'Swarm Threat Assessment',
     'Defence Training Platform',
-    'SIH 2026',
     'DSSC'
   ],
   authors: [{ name: 'THRYVE Defence Tech Team' }],

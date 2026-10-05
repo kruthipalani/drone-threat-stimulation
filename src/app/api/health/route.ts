@@ -6,7 +6,6 @@ export async function GET() {
     return NextResponse.json({
       status: 'ok',
       service: 'THRYVE | Drone Threat Simulation Trainer',
-      problem_statement_id: '26247',
       organization: 'Ministry of Defence (MoD) - Defence Services Staff College',
       database_mode: isSupabaseConfigured ? 'live_postgresql' : 'demo_seed_mode',
       timestamp: new Date().toISOString()
